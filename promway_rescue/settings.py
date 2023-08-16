@@ -54,6 +54,8 @@ INSTALLED_APPS = [
 
 TAILWIND_APP_NAME = 'theme'
 
+if DEBUG:
+    NPM_BIN_PATH = os.environ.get('NPM', '')
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
