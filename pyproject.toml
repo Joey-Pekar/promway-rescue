@@ -17,6 +17,7 @@ django-storages = "^1.13.2"
 boto3 = "^1.28.27"
 gunicorn = "^21.2.0"
 python-dotenv = "^1.0.0"
+django-browser-reload = "^1.11.0"
 
 
 [build-system]
