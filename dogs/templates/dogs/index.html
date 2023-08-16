@@ -1,0 +1,19 @@
+{% extends "master.html" %}
+
+{% block title %}
+    Promway Rescue
+{% endblock %}
+
+{% block content %}
+
+<main class="bg-teal-700">
+    <h1>Rescues</h1>
+
+    <ul>
+        {% for rescue in available_rescues %}
+            <li>{{rescue.name}}</li>
+        {% endfor %}
+    </ul>
+</main>
+
+{% endblock %}

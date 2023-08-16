@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+{% load static tailwind_tags %}
+<html class="h-100">
+    <head>
+        <title>{% block title%}{% endblock %}</title>
+
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        {# Tailwind #}
+        {% tailwind_css %}
+
+        {# Font Awesome #}
+        {% load static %}
+        <link href="{% static 'fontawesomefree/css/fontawesome.css' %}" rel="stylesheet" type="text/css">
+        <link href="{% static 'fontawesomefree/css/brands.css' %}" rel="stylesheet" type="text/css">
+        <link href="{% static 'fontawesomefree/css/solid.css' %}" rel="stylesheet" type="text/css">
+    </head>
+    <body>
+        {# Navbar #}
+        <nav class="bg-teal-700">
+            <div class="max-w-screen-2xl flex flex-wrap items-center justify-between mx-auto p-4">
+                <a href="#" class="flex items-center">
+                    <span class="self-center text-2xl text-gray-200 font-semibold whitespace-nowrap">Promway Rescue</span>
+                </a>
+                <button data-collapse-toggle="navbar" type="button" class="inline-flex items-center p-2 w-10 justify-center text-sm text-gray-200 rounded-lg md:hidden hover:bg-teal-600 focus:outline-none focus:ring-2 focus:ring-teal-500" aria-controls="navbar-sticky" aria-expanded="false">
+                    <span class="sr-only">Open menu</span>
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+                <div id="navbar" class="hidden w-full md:block md:w-auto md:order-1">
+                    <ul class="flex flex-col p-4 md:p-0 mt-4 font-medium md:flex-row md:space-x-8 md:mt-0 md:transparent">
+                        <li>
+                            <a {% if request.resolver_match.url_name == 'index' %} class="nav-active" aria-current="page" {% else %} class="nav-inactive" {% endif %} href="{% url 'dogs:index' %}">Home</a>
+                        </li>
+                        <li>
+                            <a {% if request.resolver_match.url_name == 'adoptable' %} class="nav-active" aria-current="page" {% else %} class="nav-inactive" {% endif %} href="{% url 'dogs:adoptable' %}">Adoptable</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>  
+        </nav>
+
+    
+            {% block content %}
+            {% endblock %}
+            
+        <footer class="fixed bottom-0 left-0 z-20 w-full bg-gray-700 shadow">
+            <div class="w-full max-auto max-w-screen-xl p-4 md:flex md:items-center md:justify-between">
+                <span class="text-sm text-gray-200 sm:text-center">&copy; {% now "Y" %} Promway Rescue</span>
+            </div>
+        </footer>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.0/flowbite.min.js"></script>
+    </body>
+</html>

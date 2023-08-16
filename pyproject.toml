@@ -1,0 +1,24 @@
+[tool.poetry]
+name = "promway_rescue"
+version = "0.1.0"
+description = ""
+authors = ["Joey Pekar <joey.pekar@protonmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.9"
+django = "^4.2.4"
+django-tailwind = "^3.6.0"
+fontawesomefree = "^6.4.2"
+dj-database-url = "^2.1.0"
+psycopg2-binary = "^2.9.7"
+whitenoise = {extras = ["brotli"], version = "^6.5.0"}
+django-storages = "^1.13.2"
+boto3 = "^1.28.27"
+gunicorn = "^21.2.0"
+python-dotenv = "^1.0.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

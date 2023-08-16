@@ -1,0 +1,52 @@
+{% extends 'master.html' %}
+
+{% block title %}
+  Promway Rescue - Adoptable Dogs
+{% endblock %}
+
+{# Load Tags #}
+{% load rescue_tags %}
+
+{% block content %}
+  <div class="container">
+    <div id="dogs" class="row row-cols-1 row-cols-lg-2 g-4">
+      {% for rescue in available_rescues %}
+        <div class="col">
+          <div class="card shadow">
+            <div class="row g-0">
+              <div class="col-md-6">
+                <img src="{{ rescue.profile_pic.url }}" class="img-fluid rounded-start" alt="Thumbnail of {{ rescue.name }}" />
+              </div>
+              <div class="col-md-6">
+                {% if rescue.bonded_pair.all.count == 1 %}
+                <div class="card-body">
+                  <h3 class="card-title">Meet {{ rescue.name }} &amp; {{ rescue.bonded_pair.first.name }}</h3>
+                  <p class="card-text text-secondary">{{ rescue.sex }} {{ rescue.breed }} <i class="fa-solid fa-slash fa-rotate-90"></i> {{ rescue.bonded_pair.first.sex }} {{ rescue.bonded_pair.first.breed }}</p>
+                  <p class="card-text text-secondary"></p>
+                  <p class="card-text">Ages: {{ rescue.dob|age }} and {{ rescue.bonded_pair.first.dob|age }}</p>
+                  <p class="card-text">Dog Friendly: {{rescue.dog_friendly|bool_icon}}</p>
+                  <p class="card-text">Kid Friendly: {{rescue.child_friendly|bool_icon}}</p>
+                </div>  
+                <div class="text-center py-5">
+                  <a href="{% url 'dogs:detail' rescue.id %}" class="btn btn-primary">Learn More</a>
+                </div>   
+                {% else %}
+                <div class="card-body">
+                  <h3 class="card-title">Meet {{ rescue.name }}</h3>
+                  <p class="card-text text-secondary">{{ rescue.sex }} {{ rescue.breed }}</p>
+                  <p class="card-text">Age: {{ rescue.dob|age }}</p>
+                  <p class="card-text">Dog Friendly: {{rescue.dog_friendly|bool_icon}}</p>
+                  <p class="card-text">Kid Friendly: {{rescue.child_friendly|bool_icon}}</p>
+                </div>
+                <div class="text-center py-5">
+                  <a href="{% url 'dogs:detail' rescue.id %}" class="btn btn-primary">Learn More</a>
+                </div>  
+                {% endif %}
+              </div>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+{% endblock %}

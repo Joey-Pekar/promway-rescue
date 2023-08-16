@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+    .nav-active {
+        @apply block py-2 pl-3 pr-4 text-gray-100 bg-green-800 rounded md:bg-transparent md:text-gray-100 md:p-0;
+    }
+
+    .nav-inactive {
+        @apply block py-2 pl-3 pr-4 text-gray-300 rounded hover:bg-green-900 md:hover:bg-transparent md:hover:text-white md:p-0;
+    }
+}
