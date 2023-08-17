@@ -6,11 +6,16 @@ from django.utils import timezone
 register = template.Library()
 
 @register.filter(name="bool_icon", is_safe=True)
-def bool_icon(value):
+def bool_icon(value, arg):
     if value == True:
-        return mark_safe('<i class="fa-solid fa-square-check fa-xl text-success"></i>')
+        return mark_safe('<i class="fa-solid {0}"></i>'.format(arg))
     else:
-        return mark_safe('<i class="fa-solid fa-square-xmark fa-xl text-danger"></i>')
+        return mark_safe('<i class="relative fa-solid {0}"><i class="absolute left-0 fa-solid fa-slash text-danger"></i></i>'.format(arg))
+    
+@register.filter(name="slide_range")
+def slide_range(value):
+    return range(0, value - 1)
+
 
 @register.filter(name="age")
 def age(value):

@@ -8,95 +8,38 @@
 {% load rescue_tags %}
 
 {% block content %}
+
+  <div class="py-2 px-5 mx-auto max-w-screen-xl">
   {% if dog.adopted %}
-    <div class="container">
-      <div class="alert alert-info" role="alert">
-        <h4 class="alert-heading">Adoption Notice</h4><span><strong>This dog has been adopted</strong>.</span>
-      </div>
+    <div class="text-danger-light bg-dark border-danger border-b-4 border-l-8 p-2 mb-2 rounded-sm shadow-lg">
+      <i class="fa-solid fa-triangle-exclamation fa-2x"></i> This dog has been adopted! Please visit our adoptable dogs <a class="text-medium underline underline-offset-2" href="{% url 'dogs:adoptable' %}">here</a>.
     </div>
   {% endif %}
 
-  <div class="container">
-    <div class="row">
-      <div class="col-md-6 order-2 order-md-1">
-        <div class="card shadow">
-          <div class="card-body">
-            <div class="row">
-              <div class="col">
-                <h1 class="card-title">{{ dog.name }}</h1>
-                <h5 class="text-secondary">{{ dog.sex }} {{ dog.breed }}</h5>
-              </div>
-              {% if dog.bonded_pair.count > 0 %}
-              <div class="col">
-                <h1 class="card-title">{{ dog.bonded_pair.first.name }}</h1>
-                <h5 class="text-secondary">{{ dog.bonded_pair.first.sex }} {{ dog.bonded_pair.first.breed }}</h5>
-              </div>
-              {% endif %}
-            </div>
-          </div>
-          <hr />
-          <div class="card-body">
-            <div class="row py-2">
-              <div class="col-1 my-1 d-flex justify-content-center">
-                <i class="fa-solid fa-dog fa-2xl"></i>
-              </div>
-              <div class="col-9">Dog Friendly:</div>
-              <div class="col-2">{{ dog.dog_friendly|bool_icon }}</div>
-            </div>
-            <div class="row py-2">
-              <div class="col-1 my-1 d-flex justify-content-center">
-                <i class="fa-solid fa-cat fa-2xl"></i>
-              </div>
-              <div class="col-9">Cat Friendly:</div>
-              <div class="col-2">{{ dog.cat_friendly|bool_icon }}</div>
-            </div>
-            <div class="row py-2">
-              <div class="col-1 my-1 d-flex justify-content-center">
-                <i class="fa-solid fa-child-reaching fa-2xl"></i>
-              </div>
-              <div class="col-9">Child Friendly:</div>
-              <div class="col-2">{{ dog.child_friendly|bool_icon }}</div>
-            </div>
-            <div class="row py-2">
-              <div class="col-1 my-1 d-flex justify-content-center">
-                <i class="fa-solid fa-house-chimney fa-2xl mx-auto"></i>
-              </div>
-              <div class="col-9">House-Broken:</div>
-              <div class="col-2">{{ dog.house_broken|bool_icon }}</div>
-            </div>
-          </div>
-          <hr />
-          <div class="card-body">
-            <p>{{ dog.description }}</p>
-          </div>
-        </div>
-      </div>
+    <div class="bg-white border border-y-2 border-dark rounded-sm shadow-lg">
+      <p class="text-4xl font-semibold text-primary p-2 px-4">{{ dog.name }}</p>
 
-      <div class="col order-1 order-md-2 py-2">
-        <div id="slideshow" class="carousel slide rounded shadow bg-dark" data-bs-ride="carousel">
-          <div class="carousel-inner">
-            {% for image in dog.galleryimage_set.all %}
-              {% if forloop.first %}
-                <div class="carousel-item active">
-                  <img src="{{ image.image.url }}" class="d-block rounded mx-auto" style="max-height: 480px" alt="Image" />
-                </div>
-              {% else %}
-                <div class="carousel-item">
-                  <img src="{{ image.image.url }}" class="d-block rounded mx-auto" style="max-height: 480px" alt="Image" />
-                </div>
-              {% endif %}
-            {% endfor %}
-          </div>
-          <button class="carousel-control-prev" type="button" data-bs-target="#slideshow" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-          </button>
-          <button class="carousel-control-next" type="button" data-bs-target="#slideshow" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-          </button>
+      <div id="carousel" class="relative w-full" data-carousel="slide">
+        <!-- Carousel wrapper -->
+        <div class="relative h-96 overflow-hidden bg-dark border-t-2 border-secondary md:h-96">
+          {% for image in dog.galleryimage_set.all %}
+             <!-- Item 1 -->
+            <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                <img src="{{ image.image.url }}" class="absolute block w-auto h-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="{{image.image.id}}">
+            </div>
+            {% endfor%}
         </div>
-      </div>
+        <!-- Slider indicators -->
+        <div class="absolute z-30 flex space-x-3 -translate-x-1/2 bottom-5 left-1/2">
+            {% for i in dog.galleryimage_set.all %}
+            <button type="button" class="w-3 h-3 rounded-full" aria-current="true" aria-label="Slide {{ forloop.counter }}" data-carousel-slide-to="{{ forloop.counter0 }}"></button>
+            {% endfor %}
+        </div>
+        
     </div>
+
+    </div>
+
   </div>
+ 
 {% endblock %}

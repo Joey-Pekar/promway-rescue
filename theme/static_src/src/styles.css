@@ -10,4 +10,8 @@
     .nav-inactive {
         @apply block py-2 pl-3 pr-4 text-gray-300 rounded hover:bg-primary-light md:hover:bg-transparent md:hover:text-white md:p-0;
     }
+
+    .info-tooltip {
+        @apply absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-light transition-opacity duration-500 bg-dark rounded-md shadow-sm opacity-0 tooltip
+    }
 }

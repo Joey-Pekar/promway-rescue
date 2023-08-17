@@ -39,7 +39,7 @@ module.exports = {
          * Python: If you use Tailwind CSS classes in Python, uncomment the following line
          * and make sure the pattern below matches your project structure.
          */
-        // '../../**/*.py'
+        '../../**/*.py',
         './node_modules/flowbite/**/*.js',
     ],
     theme: {
@@ -54,10 +54,22 @@ module.exports = {
                 'secondary': '#58A7B8', // Fountain Blue
                 'light': '#F1E9EE', // Dawn Pink
                 'dark': '#282737', // Steel Gray
-                'success': '#408b62', // Viridian
-                'warning': '#be7b2a', // Marigold
-                'danger': '#f44336', // Pomegranate
-            },
+                'success': {
+                    light: '#70A889',
+                    DEFAULT: '#408B62', // Viridian
+                    dark: '#30684A',
+                },
+                'warning': {
+                    light: '#CE9C5F',
+                    DEFAULT: '#BE7B2A', // Marigold
+                    dark: '#8F5C20',
+                },
+                'danger': {
+                    light: '#F6695E',
+                    DEFAULT: '#F44336', // Pomegranate
+                    dark: '#86251E',
+                }
+            }
         },
     },
     plugins: [

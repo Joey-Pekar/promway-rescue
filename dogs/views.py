@@ -17,6 +17,7 @@ class AdoptableView(generic.ListView):
 
     def get_queryset(self):
         return Dog.objects.filter(adopted=False).filter(hidden=False).order_by("name")
+    
 
 class DetailView(generic.DetailView):
     model = Dog
