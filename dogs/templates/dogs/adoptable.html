@@ -8,45 +8,17 @@
 {% load rescue_tags %}
 
 {% block content %}
-  <div class="container">
-    <div id="dogs" class="row row-cols-1 row-cols-lg-2 g-4">
+    <div id="dogs" class="py-2 px-5 mx-auto max-w-screen-xl grid grid-cols-1 md:grid-cols-2 md:px-2 gap-4">
       {% for rescue in available_rescues %}
-        <div class="col">
-          <div class="card shadow">
-            <div class="row g-0">
-              <div class="col-md-6">
-                <img src="{{ rescue.profile_pic.url }}" class="img-fluid rounded-start" alt="Thumbnail of {{ rescue.name }}" />
-              </div>
-              <div class="col-md-6">
-                {% if rescue.bonded_pair.all.count == 1 %}
-                <div class="card-body">
-                  <h3 class="card-title">Meet {{ rescue.name }} &amp; {{ rescue.bonded_pair.first.name }}</h3>
-                  <p class="card-text text-secondary">{{ rescue.sex }} {{ rescue.breed }} <i class="fa-solid fa-slash fa-rotate-90"></i> {{ rescue.bonded_pair.first.sex }} {{ rescue.bonded_pair.first.breed }}</p>
-                  <p class="card-text text-secondary"></p>
-                  <p class="card-text">Ages: {{ rescue.dob|age }} and {{ rescue.bonded_pair.first.dob|age }}</p>
-                  <p class="card-text">Dog Friendly: {{rescue.dog_friendly|bool_icon}}</p>
-                  <p class="card-text">Kid Friendly: {{rescue.child_friendly|bool_icon}}</p>
-                </div>  
-                <div class="text-center py-5">
-                  <a href="{% url 'dogs:detail' rescue.id %}" class="btn btn-primary">Learn More</a>
-                </div>   
-                {% else %}
-                <div class="card-body">
-                  <h3 class="card-title">Meet {{ rescue.name }}</h3>
-                  <p class="card-text text-secondary">{{ rescue.sex }} {{ rescue.breed }}</p>
-                  <p class="card-text">Age: {{ rescue.dob|age }}</p>
-                  <p class="card-text">Dog Friendly: {{rescue.dog_friendly|bool_icon}}</p>
-                  <p class="card-text">Kid Friendly: {{rescue.child_friendly|bool_icon}}</p>
-                </div>
-                <div class="text-center py-5">
-                  <a href="{% url 'dogs:detail' rescue.id %}" class="btn btn-primary">Learn More</a>
-                </div>  
-                {% endif %}
-              </div>
-            </div>
+        <a href="{% url 'dogs:detail' rescue.id %}" class="flex flex-col items-center bg-white border-2 border-dark rounded-md shadow md:flex-row md:max-w-xl">
+          <img class="object-cover w-full rounded-t-md h-96 md:h-auto md:w-48 md:rounded-none md:rounded-l-md" src="{{ rescue.profile_pic.url }}" alt="" />
+          <div class="flex flex-col justify-between p-2 leading-normal">
+            <h5 class="mb-2 text-2xl font-bold tracking-tight text-primary">{{ rescue.name }}</h5>
+            <p class="mb-3 font-normal text-gray-700"> {{ rescue.sex }} {{ rescue.breed }} | {{ rescue.dob|age }} Old</p>
+            <p class="mb-3 font-normal text-dark"></p>
+            <p class="mb-3 font-normal text-dark"></p>
           </div>
-        </div>
+        </a>
       {% endfor %}
     </div>
-  </div>
 {% endblock %}

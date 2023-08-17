@@ -19,16 +19,16 @@ def age(value):
     # Calculate Years, return years if 1 or older.
     years = int(now.year) - int(value.year) - ((int(now.month), int(now.day)) < (int(value.month), int(value.day)))
     if years > 1:
-        return str(years) + " years"
+        return str(years) + " Years"
     elif years == 1:
-        return str(years) + " year"
+        return str(years) + " Year"
     else:
         # Calculate months, if less than a month, return message
         months = int(now.month) - int(value.month)
         if months > 1:
-            return str(months) + " months"
+            return str(months) + " Months"
         elif months == 1:
-            return str(months) + " month"
+            return str(months) + " Month"
         else:
             return "Less than a month"
     
