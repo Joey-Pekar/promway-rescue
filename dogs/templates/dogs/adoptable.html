@@ -18,7 +18,7 @@
           <h5 class="mb-2 text-2xl font-bold tracking-tight text-primary">{{ rescue.name }}</h5>
           <p class="mb-3 font-normal text-secondary"> {{ rescue.sex }} {{ rescue.breed }} <i class="fa-solid fa-minus"></i> {{ rescue.dob|age }} Old</p>
         </div>
-        <ul class="flex flex-row justify-between mx-auto py-3 px-8 rounded-b-sm text-light bg-dark fa-2x">
+        <ul class="flex flex-row justify-between mx-auto py-3 px-8 rounded-b-sm text-light bg-primary-gradient fa-2x">
           <li data-tooltip-target="tooltip-df" class="hover:animate-bounce">{{rescue.dog_friendly|bool_icon:'fa-dog'}}</li>
           <div id="tooltip-df" role="tooltip" class="info-tooltip">Dog Friendly?</div>
           <li data-tooltip-target="tooltip-cf" class="hover:animate-bounce">{{rescue.cat_friendly|bool_icon:'fa-cat'}}</li>

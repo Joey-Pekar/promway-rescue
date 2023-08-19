@@ -2,6 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url('https://fonts.googleapis.com/css2?family=Lobster+Two&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+
+@layer base {
+    html {
+        font-family: 'Lato', sans-serif;
+    }
+}
+
 @layer components {
     .nav-active {
         @apply block py-2 pl-3 pr-4 text-light bg-primary-dark rounded md:bg-transparent md:text-light md:p-0;
@@ -13,5 +22,15 @@
 
     .info-tooltip {
         @apply absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-light transition-opacity duration-500 bg-dark rounded-md shadow-sm opacity-0 tooltip
+    }
+}
+
+@layer utilities {
+    .bg-primary-gradient {
+        @apply bg-gradient-to-br from-primary-dark via-primary-light to-primary-dark;
+    }
+
+    .font-display {
+        font-family: 'Lobster Two', cursive;
     }
 }
