@@ -124,6 +124,11 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+CORS_ALLOWED_ORIGINS = [
+    "https://promwayrescue.org",
+    "127.0.0.1:8000"
+]
+
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,

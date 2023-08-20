@@ -16,6 +16,14 @@ def bool_icon(value, arg):
 def slide_range(value):
     return range(0, value - 1)
 
+@register.filter(name="size")
+def size_by_weight(value):
+    if value < 20:
+        return 'Small'
+    elif value < 60:
+        return 'Medium'
+    else:
+        return 'Large'
 
 @register.filter(name="age")
 def age(value):

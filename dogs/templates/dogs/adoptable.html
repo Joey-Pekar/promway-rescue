@@ -12,10 +12,10 @@
     {% for rescue in available_rescues %}
       <a href="{% url 'dogs:detail' rescue.id %}" class="mx-auto w-full max-w-md bg-white border border-dark rounded-sm shadow-xl">
         <div class="bg-dark">
-        <img class="h-80  mx-auto" src="{{ rescue.profile_pic.url }}" alt="" />
+        <img class="h-80 mx-auto" src="{{ rescue.profile_pic.url }}" alt="" />
         </div>
         <div class="px-5 py-2">
-          <h5 class="mb-2 text-2xl font-bold tracking-tight text-primary">{{ rescue.name }}</h5>
+          <h5 class="mb-2 text-2xl font-bold font-display tracking-tight text-primary">{{ rescue.name }}</h5>
           <p class="mb-3 font-normal text-secondary"> {{ rescue.sex }} {{ rescue.breed }} <i class="fa-solid fa-minus"></i> {{ rescue.dob|age }} Old</p>
         </div>
         <ul class="flex flex-row justify-between mx-auto py-3 px-8 rounded-b-sm text-light bg-primary-gradient fa-2x">
