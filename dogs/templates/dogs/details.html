@@ -5,14 +5,14 @@
 {% endblock %}
 
 {% block social %}
-  <meta property="og:title" content="Promway Rescue - Meet {{dog.name}}" />
+  <meta property="og:title" content="Promway Rescue - Meet {{ dog.name }}" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="{% url 'dogs:detail' dog.id %}" />
-  <meta property="og:image" content="{{dog.profile_pic.url}}" />
+  <meta property="og:image" content="{{ dog.profile_pic.url }}" />
 
-  <meta name="twitter:title" content="Promway Rescue - Meet {{dog.name}}">
-  <meta name="twitter:description" content="{{dog.weight|size}} {{dog.sex}} {{dog.breed}}">
-  <meta name="twitter:image" content="{{dog.profile_pic.url}}">
+  <meta name="twitter:title" content="Promway Rescue - Meet {{ dog.name }}">
+  <meta name="twitter:description" content="{{ dog.sex }} {{ dog.breed }}">
+  <meta name="twitter:image" content="{{ dog.profile_pic.url }}">
   <meta name="twitter:card" content="summary_large_image">
 {% endblock %}
 
