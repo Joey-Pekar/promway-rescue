@@ -38,17 +38,17 @@
     </head>
     <body class="bg-light">
         {# Navbar #}
-        <nav class="bg-primary border-b-2 border-primary-dark shadow-lg select-none">
-            <div class="max-w-screen-2xl flex flex-wrap items-center justify-between mx-auto p-4">
+        <nav class="border-b-2 shadow-lg select-none bg-primary border-primary-dark">
+            <div class="flex flex-wrap items-center justify-between p-4 mx-auto max-w-screen-2xl">
                 <a href="{% url 'dogs:index' %}" class="flex items-center">
-                    <span class="self-center text-3xl text-light font-semibold font-display whitespace-nowrap">Promway Rescue</span>
+                    <span class="self-center text-3xl font-semibold text-light font-display whitespace-nowrap">Promway Rescue</span>
                 </a>
-                <button data-collapse-toggle="navbar" type="button" class="inline-flex items-center p-2 w-10 justify-center text-sm text-light rounded-lg md:hidden hover:bg-primary-light focus:outline-none focus:ring-2 focus:ring-primary-light" aria-controls="navbar" aria-expanded="false">
+                <button data-collapse-toggle="navbar" type="button" class="inline-flex items-center justify-center w-10 p-2 text-sm rounded-lg text-light md:hidden hover:bg-primary-light focus:outline-none focus:ring-2 focus:ring-primary-light" aria-controls="navbar" aria-expanded="false">
                     <span class="sr-only">Open menu</span>
                     <i class="fa-solid fa-bars"></i>
                 </button>
                 <div id="navbar" class="hidden w-full md:block md:w-auto md:order-1">
-                    <ul class="flex flex-col p-4 md:p-0 mt-4 font-medium md:flex-row md:space-x-8 md:mt-0 md:transparent">
+                    <ul class="flex flex-col p-4 mt-4 font-medium md:p-0 md:flex-row md:space-x-8 md:mt-0 md:transparent">
                         <li>
                             <a {% if request.resolver_match.url_name == 'index' %} class="nav-active" aria-current="page" {% else %} class="nav-inactive" {% endif %} href="{% url 'dogs:index' %}">Home</a>
                         </li>
@@ -60,13 +60,13 @@
             </div>  
         </nav>
 
-    <main id="main" class=" mt-2 mb-24 fade">
+    <main id="main" class="mt-4 mb-24 fade">
             {% block content %}
             {% endblock %}
     </main>
             
-        <footer class="fixed bottom-0 left-0 z-20 w-full bg-dark shadow">
-            <div class="w-full max-auto max-w-screen-xl p-4 md:flex md:items-center md:justify-between">
+        <footer class="fixed bottom-0 left-0 z-20 w-full shadow bg-dark">
+            <div class="w-full max-w-screen-xl p-4 max-auto md:flex md:items-center md:justify-between">
                 <span class="text-sm text-light sm:text-center">&copy; {% now "Y" %} Promway Rescue</span>
             </div>
         </footer>

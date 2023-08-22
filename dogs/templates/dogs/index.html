@@ -1,19 +1,33 @@
-{% extends "master.html" %}
+{% extends 'master.html' %}
 
 {% block title %}
-    Promway Rescue
+  Promway Rescue
 {% endblock %}
 
 {% block content %}
+  <section class="px-4 mx-auto max-w-screen-2xl">
+    <div class="rounded-sm bg-dark bg-gradient-to-b from-primary-dark to-primary-light">
+      <div id="Logo" class="flex justify-center py-4 text-white align-center">
+        <h1 class="text-6xl font-display">Promway Rescue</h1>
+      </div>
+      <hr class="h-1 mx-auto my-6 bg-white border-0 rounded w-72" />
+      <div class="max-w-6xl px-4 mx-auto text-center text-white">
+        <p class="pb-4">Promway Rescue, Inc exists to provide shelter and one-on-one specialized care for in-need companion animals from local animal welfare organizations and to ENSURE permanency in a good home.</p>
+        <p class="pb-4">Promway Rescue was born out of Bill Novotny’s love of helping Stark County Animals in need. We are happy to now be one of Stark County’s official rescues! Having always helped house rescue dogs at Promway Kennels, we are now happy to be an official rescue so that we can do even more to help more dogs in Stark County.</p>
+      </div>
+    </div>
+  </section>
 
-<main class="bg-teal-700">
-    <h1>Rescues</h1>
-
-    <ul>
-        {% for rescue in available_rescues %}
-            <li>{{rescue.name}}</li>
-        {% endfor %}
-    </ul>
-</main>
-
+  <section class="grid grid-cols-1 px-4 pt-4 mx-auto md:grid-cols-3 gap-x-2 gap-y-4 max-w-screen-2xl">
+    <div class="w-full col-span-1 md:col-span-2">
+      <div class="block w-full p-6 border rounded-sm shadow-lg bg-dark border-primary">
+        <h4 class="mb-2 text-4xl tracking-wide text-center text-white font-display">Featured</h4>
+      </div>
+    </div>
+    <div class="">
+      <div class="block w-full p-6 border rounded-sm shadow-lg bg-dark border-dark">
+        <h4 class="mb-2 text-4xl tracking-wide text-center text-white font-display">Events</h4>
+      </div>
+    </div>
+  </section>
 {% endblock %}

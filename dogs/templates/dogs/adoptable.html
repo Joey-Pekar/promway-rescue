@@ -8,17 +8,17 @@
 {% load rescue_tags %}
 
 {% block content %}
-  <div id="dogs" class="py-2 px-5 mx-auto max-w-screen-xl grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 lg:px-2 gap-4">
+  <div id="dogs" class="grid max-w-screen-xl grid-cols-1 gap-4 px-5 py-2 mx-auto md:grid-cols-2 lg:grid-cols-3 lg:px-2">
     {% for rescue in available_rescues %}
-      <a href="{% url 'dogs:detail' rescue.id %}" class="mx-auto w-full max-w-md bg-white border border-dark rounded-sm shadow-xl">
+      <a href="{% url 'dogs:detail' rescue.id %}" class="w-full max-w-md mx-auto bg-white border rounded-sm shadow-xl border-dark">
         <div class="bg-dark">
-        <img class="h-80 mx-auto" src="{{ rescue.profile_pic.url }}" alt="" />
+        <img class="mx-auto h-80" src="{{ rescue.profile_pic.url }}" alt="" />
         </div>
         <div class="px-5 py-2">
-          <h5 class="mb-2 text-2xl font-bold font-display tracking-tight text-primary">{{ rescue.name }}</h5>
+          <h5 class="mb-2 text-2xl font-bold tracking-tight font-display text-primary">{{ rescue.name }}</h5>
           <p class="mb-3 font-normal text-secondary"> {{ rescue.sex }} {{ rescue.breed }} <i class="fa-solid fa-minus"></i> {{ rescue.dob|age }} Old</p>
         </div>
-        <ul class="flex flex-row justify-between mx-auto py-3 px-8 rounded-b-sm text-light bg-primary-gradient fa-2x">
+        <ul class="flex flex-row justify-between px-8 py-3 mx-auto rounded-b-sm text-light bg-primary-gradient fa-2x">
           <li data-tooltip-target="tooltip-df" class="hover:animate-bounce">{{rescue.dog_friendly|bool_icon:'fa-dog'}}</li>
           <div id="tooltip-df" role="tooltip" class="info-tooltip">Dog Friendly?</div>
           <li data-tooltip-target="tooltip-cf" class="hover:animate-bounce">{{rescue.cat_friendly|bool_icon:'fa-cat'}}</li>

@@ -54,3 +54,10 @@ class Dog(models.Model):
 class GalleryImage(models.Model):
     dog = models.ForeignKey(Dog, on_delete=models.CASCADE)
     image = models.ImageField(upload_to=get_dir)
+
+class Event(models.Model):
+    name = models.CharField(max_length=255)
+    description = models.CharField(max_length=255)
+    date = models.DateField("Event Date")
+
+    time = models.TimeField("Time")

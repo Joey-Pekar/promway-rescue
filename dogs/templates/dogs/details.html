@@ -21,34 +21,34 @@
 
 {% block content %}
 
-  <div class="pb-2 px-5 mx-auto max-w-screen-xl">
+  <div class="max-w-screen-xl px-5 pb-2 mx-auto">
   {% if dog.adopted %}
-    <div class="text-danger-light bg-dark border-danger border-b-4 border-l-8 p-2 mb-2 rounded-sm shadow-lg">
-      <i class="fa-solid fa-triangle-exclamation fa-2x"></i> This dog has been adopted! Please visit our adoptable dogs <a class="text-medium underline underline-offset-2" href="{% url 'dogs:adoptable' %}">here</a>.
+    <div class="p-2 mb-2 border-b-4 border-l-8 rounded-sm shadow-lg text-danger-light bg-dark border-danger">
+      <i class="fa-solid fa-triangle-exclamation fa-2x"></i> This dog has been adopted! Please visit our adoptable dogs <a class="underline text-medium underline-offset-2" href="{% url 'dogs:adoptable' %}">here</a>.
     </div>
   {% endif %}
 
-    <div class="bg-white border border-y-2 border-dark rounded-sm shadow-lg">
-      <h1 class="text-4xl font-semibold font-display text-primary p-2 px-4">{{ dog.name }}</h1>
+    <div class="bg-white border rounded-sm shadow-lg border-y-2 border-dark">
+      <h1 class="p-2 px-4 text-4xl font-semibold font-display text-primary">{{ dog.name }}</h1>
 
       <div class="grid grid-cols-1 md:grid-cols-2">
-        <div class="order-2 md:order-1 px-4">
-          <h2 class="text-xl py-2 font-medium"><span data-tooltip-target="ttp-weight" data-tooltip-placement="bottom" class="hover:underline underline-offset-4">{{dog.weight|size}}</span> {{dog.sex}} {{dog.breed}}</h2>
-          <div id="ttp-weight" role="tooltip" class="absolute z-10 invisible inline-block px-3 text font-medium text-dark rounded-lg shadow-sm opacity-0 tooltip">
+        <div class="order-2 px-4 md:order-1">
+          <h2 class="py-2 text-xl font-medium"><span data-tooltip-target="ttp-weight" data-tooltip-placement="bottom" clheass="hover:underline underline-offset-4">{{dog.weight|size}}</span> {{dog.sex}} {{dog.breed}}</h2>
+          <div id="ttp-weight" role="tooltip" class="absolute z-10 invisible inline-block px-3 font-medium rounded-lg shadow-sm opacity-0 text text-dark tooltip">
             {{ dog.weight }} lbs
           </div>
 
-          <ul class="w-full mx-auto my-6 text-secondary border border-primary-dark rounded-sm">
-            <li class="w-full px-4 py-2 border-b border-primary-light rounded-t-lg flex justify-between"><span class="font-semibold text-lg self-center">Dog Friendly</span> <span class="text-dark fa-2x">{{dog.dog_friendly|bool_icon:'fa-dog'}}</span></li>
-            <li class="w-full px-4 py-2 border-b border-primary-light flex justify-between"><span class="font-semibold text-lg self-center">Cat Friendly</span> <span class="text-dark fa-2x">{{dog.cat_friendly|bool_icon:'fa-cat'}}</span></li>
-            <li class="w-full px-4 py-2 border-b border-primary-light flex justify-between"><span class="font-semibold text-lg self-center">Child Friendly</span> <span class="text-dark fa-2x">{{dog.child_friendly|bool_icon:'fa-children'}}</span></li>
-            <li class="w-full px-4 py-2 rounded-b-lg flex justify-between"><span class="font-semibold text-lg self-center">House-Broken</span> <span class="text-dark fa-2x">{{dog.house_broken|bool_icon:'fa-house-chimney'}}</span></li></li>
+          <ul class="w-full mx-auto my-6 border rounded-sm text-secondary border-primary-dark">
+            <li class="flex justify-between w-full px-4 py-2 border-b rounded-t-lg border-primary-light"><span class="self-center text-lg font-semibold">Dog Friendly</span> <span class="text-dark fa-2x">{{dog.dog_friendly|bool_icon:'fa-dog'}}</span></li>
+            <li class="flex justify-between w-full px-4 py-2 border-b border-primary-light"><span class="self-center text-lg font-semibold">Cat Friendly</span> <span class="text-dark fa-2x">{{dog.cat_friendly|bool_icon:'fa-cat'}}</span></li>
+            <li class="flex justify-between w-full px-4 py-2 border-b border-primary-light"><span class="self-center text-lg font-semibold">Child Friendly</span> <span class="text-dark fa-2x">{{dog.child_friendly|bool_icon:'fa-children'}}</span></li>
+            <li class="flex justify-between w-full px-4 py-2 rounded-b-lg"><span class="self-center text-lg font-semibold">House-Broken</span> <span class="text-dark fa-2x">{{dog.house_broken|bool_icon:'fa-house-chimney'}}</span></li></li>
           </ul>
           
         </div>
-        <div id="carousel" class="order-1 md:order-2 relative w-full md:shadow-lg lg:translate-x-4" data-carousel="slide">
+        <div id="carousel" class="relative order-1 w-full md:order-2 md:shadow-lg lg:translate-x-4" data-carousel="slide">
           <!-- Carousel wrapper -->
-          <div class="relative h-96 overflow-hidden bg-dark border-t-2 md:border-l-2 lg:border-r-2 lg:border-b-2 border-dark rounded-tl-sm md:h-96 pointer-events-none">
+          <div class="relative overflow-hidden border-t-2 rounded-tl-sm pointer-events-none h-96 bg-dark md:border-l-2 lg:border-r-2 lg:border-b-2 border-dark md:h-96">
             {% for image in dog.galleryimage_set.all %}
               <!-- Item 1 -->
               <div class="hidden duration-700 ease-in-out" data-carousel-item>
@@ -66,22 +66,32 @@
         
     </div>
 
-    <div id="bio" class="my-4 px-4">
+    <div id="bio" class="px-4 my-4">
       <div class="inline-flex items-center justify-center w-full">
-        <hr class="w-72 h-1 mx-auto my-4 bg-primary border-0 rounded md:my-10 dark:bg-gray-700">
-        <span class="absolute px-3 font-medium text-primary text-lg -translate-x-1/2 bg-white left-1/2">About</span>
+        <hr class="h-1 mx-auto my-4 border-0 rounded w-72 bg-primary md:my-10 dark:bg-gray-700">
+        <span class="absolute px-3 text-lg font-medium -translate-x-1/2 bg-white text-primary left-1/2">About</span>
     </div>
       
       <p class="indent-4">{{ dog.description }}</p>
     </div>
 
-    <div class="my-4">
-      <span class="text-dark px-4"><span class="text-secondary text-lg">Interested in meeting {{ dog.name }}?</span> Contact us at <span class="underline">330-494-8100</span> or send a message <span class="underline">here</span> </span>
+    <div class="mx-auto my-4">
+      <span class="px-4 text-center text-dark"><span class="text-lg text-secondary">Interested in meeting {{ dog.name }}?</span> 
+      <button type="button" data-drawer-target="contact-form" data-drawer-show="contact-form" data-drawer-placement="bottom" aria-controls="contact-form" class="underline hover:text-primary">Contact us here.</button> .</span>
+      
     </div>
 
+    
     </div>
 
+  </div>
 
+  <!-- Contact Form -->
+  <div id="contact-form" class="fixed bottom-0 left-0 right-0 z-40 p-4 pb-10 transition-transform translate-y-full bg-white" tabindex="-1" aria-labelledby="contact-form">
+    <button type="button" data-drawer-hide="contact-form" aria-controls="contact-form" class="flex justify-center mx-auto bg-transparent text-primary">
+      <i class="fa-solid fa-chevron-down"></i>
+      <span class="sr-only">Close Form</span>
+    </button>
   </div>
  
 {% endblock %}
