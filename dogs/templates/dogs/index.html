@@ -22,19 +22,35 @@
     <div class="w-full col-span-1 md:col-span-2">
       <div class="block w-full p-6 border rounded-sm shadow-lg bg-dark border-primary">
         <h4 class="mb-2 text-4xl tracking-wide text-center text-white font-display">Featured</h4>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-1">
+          {% for rescue in rescues %}
+            <a href="{% url 'dogs:detail' rescue.id %}" >
+              <div class="bg-dark hover:bg-dark-light shadow-lg border border-secondary rounded-sm ">
+                <h1 class="text-white text-center font-semibold font-display text-xl py-2">{{ rescue.name }}</h1>
+                <img class="mx-auto h-80 p-2 rounded-md" src="{{ rescue.profile_pic.url }}" alt="" />
+                
+              </div>
+            </a>
+          {% endfor %}
+        </div>
       </div>
     </div>
-    <div id="events" class="">
       <div class="block w-full p-6 border rounded-sm shadow-lg bg-dark border-dark">
         <h4 class="mb-2 text-4xl tracking-wide text-center text-white font-display">Events</h4>
         <ul class="divide-y divide-white">
           {% for e in events %}
-          <li class="text-white py-2 flex">
-            <span class="text-left font-semibold">{{ e.name }}</span><span class="text-right">{{e.date}} <i class="fa-solid fa-minus"></i> {{ e.time}}</span>
+          <li class="text-white py-2">
+            <div class="inline-flex w-full justify-between">
+            <span class="text-left font-semibold">{{ e.name }}</span><span class="text-right">{{e.date}} <i class="fa-solid fa-minus"></i> {{ e.time|time:"H:i A" }}</span>
+            </div>
+            <span>{{ e.description }}</span>
+          </li>
+          {% empty %}
+          <li class="text-white font-semibold py-2 text-center w-full">
+            No Upcoming Events
           </li>
           {% endfor %}
         </ul>
       </div>
-    </div>
   </section>
 {% endblock %}

@@ -55,7 +55,10 @@ module.exports = {
                  },
                 'secondary': '#58A7B8', // Fountain Blue
                 'light': '#F1E9EE', // Dawn Pink
-                'dark': '#282737', // Steel Gray
+                'dark': {
+                    light: '#333241',
+                    DEFAULT: '#282737', // Steel Gray
+                },
                 'success': {
                     light: '#70A889',
                     DEFAULT: '#408B62', // Viridian
