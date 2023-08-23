@@ -1,21 +1,23 @@
 from typing import Any, Dict
 from django.views import generic
 from django.utils import timezone
+from django.shortcuts import render
 
 from .models import Dog, Event
 
 # Create your views here.
 
-class IndexView(generic.ListView):
-    template_name = 'dogs/index.html'
-    context_object_name = "available_rescues"
+def Index(request):
 
-    def get_queryset(self):
-        return Dog.objects.filter(adopted=False).order_by('?')[:3]
+    rescues = Dog.objects.filter(adopted=False).order_by('?')[:3]
+    events = Event.objects.order_by("time").order_by("date").filter(date__gt=timezone.now())
+
+    context = {
+        "rescues": rescues, 
+        "events": events
+        }
     
-    def get_context_data(self, **kwargs: Any) -> Dict[str, Any]:
-        context = super().get_context_data(**kwargs)
-        context.update(events = Event.objects.order_by("time").order_by("date").filter(date__gt=timezone.now()))
+    return render(request, "dogs/index.html", context)
     
 class AdoptableView(generic.ListView):
     template_name = 'dogs/adoptable.html'

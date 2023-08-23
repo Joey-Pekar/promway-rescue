@@ -190,11 +190,6 @@ if USE_S3:
     AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com'
     AWS_S3_OBJECT_PARAMETERS = {'CacheControl': 'max-age=86400'}
 
-    # Static Settings S3
-    STATIC_LOCATION = 'static'
-    STATIC_URL = f'https://{AWS_STORAGE_BUCKET_NAME}/{STATIC_LOCATION}/'
-    STATICFILES_STORAGE = 'promway_rescue.storage_backends.StaticStorage'
-
     # Media Settings S3
     PUBLIC_MEDIA_LOCATION = 'media'
     MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{PUBLIC_MEDIA_LOCATION}/'
@@ -203,10 +198,10 @@ else:
     MEDIA_URL = 'media/'
     MEDIA_ROOT = BASE_DIR / 'media/'
 
-    STATIC_ROOT = BASE_DIR / 'production'
-    STATIC_URL = 'production/'
+STATIC_ROOT = BASE_DIR / 'production'
+STATIC_URL = 'production/'
 
-    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field

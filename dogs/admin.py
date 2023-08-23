@@ -4,7 +4,7 @@ from django.db.models.fields.related import ManyToManyField
 from django.forms.models import ModelMultipleChoiceField, ModelForm
 from django.http.request import HttpRequest
 
-from .models import Dog, GalleryImage
+from .models import Dog, GalleryImage, Event
 
 class ImageInLine(admin.TabularInline):
     model = GalleryImage
@@ -27,3 +27,4 @@ class DogAdmin(admin.ModelAdmin):
 
 # Register your models here.
 admin.site.register(Dog, DogAdmin)
+admin.site.register(Event)
