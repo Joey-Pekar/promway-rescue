@@ -41,7 +41,7 @@
           {% for e in events %}
           <li class="text-white py-2">
             <div class="inline-flex w-full justify-between">
-            <span class="text-left font-semibold">{{ e.name }}</span><span class="text-right">{{e.date}} <i class="fa-solid fa-minus"></i> {{ e.time|time:"H:i A" }}</span>
+            <span class="text-left font-semibold">{{ e.name }}</span><span class="text-right">{{e.date}} <i class="fa-solid fa-minus"></i> {{ e.time|time:"I:i A" }}</span>
             </div>
             <span>{{ e.description }}</span>
           </li>
