@@ -77,7 +77,7 @@
 
     <div class="mx-auto my-4">
       <span class="px-4 text-center text-dark"><span class="text-lg text-secondary">Interested in meeting {{ dog.name }}?</span> 
-      <button type="button" data-drawer-target="contact-form" data-drawer-show="contact-form" data-drawer-placement="bottom" aria-controls="contact-form" class="underline hover:text-primary">Contact us here.</button> .</span>
+      <button type="button" data-drawer-target="contact-form" data-drawer-show="contact-form" data-drawer-placement="bottom" aria-controls="contact-form" class="underline hover:text-primary">Click here to view our adoption process and next steps.</button> .</span>
       
     </div>
 
@@ -93,7 +93,22 @@
       <span class="sr-only">Close Form</span>
     </button>
 
-    <h3 class="text-xl py-4 text-center text-dark">To schedule a meet and greet with {{ dog.name }}, reach out to us at <a href="tel:13304948100" class="underline text-primary hover:text-primary-light">(330) 494-8100</a>.<br /> We are available Monday through Friday from 8:00 AM to 5:30 PM and Saturdays from 8:00 AM to Noon.</h3>
+    <h2 class="text-2xl text-center text-primary">Adoption Process</h2>
+
+    <div class="p-4">
+      <p class="text-lg text-dark">We use a multi-step adoption process to ensure we find the best possible placement for our rescues.</p>
+      <ol class="list-disc list-inside text-lg text-dark">
+        <li class="ml-3 my-2"><span class="text-primary">1. Meet and Greet:</span> Meet the dog and see if it is a good fit for your family. To schedule a meet and greet with {{ dog.name }}, reach out to us at <a href="tel:13304948100" class="text-primary hover:text-primary-light"><i class="fa-solid fa-phone"></i> <span class="underline">(330) 494-8100</span></a>.</li> 
+        <li class="ml-3 my-2"><span class="text-primary">2. Application:</span> Fill out our adoption application if you are still interested, and we will review it to ensure you are a good fit for the dog.</li>
+        <li class="ml-3 my-2"><span class="text-primary">3. Vet Check:</span> We will verify with your previous veterinarian that you are up to date, sometimes this will require you to contact the vet to give them permission to release information.</li>
+        <li class="ml-3 my-2"><span class="text-primary">4. Second Meet and Greet:</span> For this meet and greet, we would like the entire family and any other dogs to be there, to make sure there won't be any conflicts.</li>
+        <li class="ml-3 my-2"><span class="text-primary">5. Adoption:</span> You sign our adoption paperwork and pay the adoption fee, and get to go home with your new dog.</li>
+      </ol>
+      <hr class="my-4" >
+      <p class="text-lg text-dark">We are available Monday through Friday from 8:00 AM to 5:30 PM and Saturdays from 8:00 AM to Noon.</p>
+
+    </div>
+
 
   </div>
  
